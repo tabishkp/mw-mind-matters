@@ -1,10 +1,12 @@
 
 import React from 'react';
 import BottomNavigation from '@/components/layout/BottomNavigation';
-import { ArrowRight, Gift, User, Moon, Bell, Info } from 'lucide-react';
+import { ArrowRight, Gift, User, Info } from 'lucide-react';
+import { Moon, Bell, AlertTriangle, MoonStar, Clock } from '@/components/ui/lucide-icons';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
+import SleepTimeChart from '@/components/sleep/SleepTimeChart';
 
 const Sleep = () => {
   const navigate = useNavigate();

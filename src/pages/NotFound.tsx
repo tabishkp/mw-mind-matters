@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import { Moon } from "@/components/ui/lucide-icons";
 
 const NotFound = () => {
   const location = useLocation();

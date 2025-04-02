@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import BottomNavigation from '@/components/layout/BottomNavigation';
 import { Gift, User, ArrowRight } from 'lucide-react';
+import { AlertTriangle, Moon, Clock } from '@/components/ui/lucide-icons';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import SleepTimeChart from '@/components/sleep/SleepTimeChart';

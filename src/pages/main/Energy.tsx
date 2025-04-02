@@ -4,6 +4,10 @@ import BottomNavigation from '@/components/layout/BottomNavigation';
 import { Gift, User, X, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
+import { 
+  Sunrise, Sun, Coffee, Sunset, Moon, MoonStar, 
+  Battery, LineChart 
+} from '@/components/ui/lucide-icons';
 
 const Energy = () => {
   const navigate = useNavigate();

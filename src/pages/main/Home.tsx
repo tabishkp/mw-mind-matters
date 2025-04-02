@@ -2,7 +2,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import BottomNavigation from '@/components/layout/BottomNavigation';
-import { ArrowRight, Moon, Bell, Gift, User } from 'lucide-react';
+import { ArrowRight, Gift, User } from 'lucide-react';
+import { Bell, Moon, Pill, AlarmClock, Smartphone } from '@/components/ui/lucide-icons';
 import { Button } from '@/components/ui/button';
 import { useUser } from '@/contexts/UserContext';
 

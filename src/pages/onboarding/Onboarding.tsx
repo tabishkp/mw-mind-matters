@@ -2,7 +2,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Moon, ArrowRight, User, BarChart2, Activity, Pillow, Database } from 'lucide-react';
+import { Moon, ArrowRight, BarChart2, Activity, Database } from 'lucide-react';
+import { User, Pill } from '@/components/ui/lucide-icons';
 
 interface StepCardProps {
   icon: React.ReactNode;
@@ -62,7 +63,7 @@ const Onboarding: React.FC = () => {
         />
         
         <StepCard
-          icon={<Pillow size={18} className="text-white" />}
+          icon={<Pill size={18} className="text-white" />}
           title="Sleep Practices"
           description="Tell us about your current sleep habits"
           onClick={() => navigate('/onboarding/sleep-practices')}

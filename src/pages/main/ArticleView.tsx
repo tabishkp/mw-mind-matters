@@ -136,7 +136,7 @@ const ArticleView = () => {
       {/* Article Content */}
       <div className="pb-8">
         {/* Hero Image */}
-        {article.heroImage && (
+        {'heroImage' in article && article.heroImage && (
           <div className="w-full h-48 overflow-hidden">
             <img 
               src={article.heroImage} 
@@ -165,7 +165,7 @@ const ArticleView = () => {
         </div>
         
         {/* Product Promotion */}
-        {article.productPromo && (
+        {'productPromo' in article && article.productPromo && (
           <div className="px-6 mt-8">
             <div className="bg-gradient-to-br from-brand-purple/90 to-purple-900 rounded-xl p-5">
               <h3 className="font-medium text-lg mb-2">{article.productPromo.title}</h3>
@@ -173,7 +173,7 @@ const ArticleView = () => {
               <Button 
                 variant="secondary" 
                 className="bg-white/20 hover:bg-white/30"
-                onClick={() => window.open(article.productPromo!.link, "_blank")}
+                onClick={() => window.open(article.productPromo.link, "_blank")}
               >
                 {article.productPromo.ctaText}
               </Button>
