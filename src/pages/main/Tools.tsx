@@ -1,7 +1,11 @@
 
 import React from 'react';
 import BottomNavigation from '@/components/layout/BottomNavigation';
-import { Gift, User, Music, Play, BedDouble, Glasses, Moon, Pill, Coffee, UtensilsCrossed, Dumbbell, Wine } from 'lucide-react';
+import { Gift, User } from 'lucide-react';
+import { 
+  Music, Play, BedDouble, Glasses, Moon, Pill, Coffee, UtensilsCrossed, 
+  Dumbbell, Wine, Sun, Eye, TrendingUp, FileEdit, Waves, Clock, Activity 
+} from '@/components/ui/lucide-icons';
 import { Link } from 'react-router-dom';
 import ToolCard from '@/components/tools/ToolCard';
 

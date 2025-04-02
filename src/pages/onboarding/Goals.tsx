@@ -2,7 +2,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, LineChart, Dumbbell, Moon, SmilePlus, Star } from 'lucide-react';
+import { ArrowRight, LineChart, Dumbbell, SmilePlus, Star } from 'lucide-react';
+import { Moon, User } from '@/components/ui/lucide-icons';
 import TimelineIndicator from '@/components/ui/timeline-indicator';
 import SelectionCard from '@/components/onboarding/SelectionCard';
 import { useUser, Goal } from '@/contexts/UserContext';

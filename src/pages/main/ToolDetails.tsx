@@ -123,7 +123,7 @@ const ToolDetails = () => {
         </div>
         
         {/* Product Recommendation */}
-        {content.productRecommendation && (
+        {'productRecommendation' in content && content.productRecommendation && (
           <div className="bg-gradient-to-br from-brand-purple/90 to-purple-900 rounded-xl p-5 mb-8">
             <h3 className="text-lg font-medium mb-2">{content.productRecommendation.title}</h3>
             <p className="text-sm opacity-90 mb-4">{content.productRecommendation.description}</p>

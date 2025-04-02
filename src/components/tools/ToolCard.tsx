@@ -8,7 +8,7 @@ interface ToolCardProps {
   id: string;
   title: string;
   description?: string;
-  icon?: string;
+  icon?: React.ReactNode;
   iconColor?: string;
   hasReminder?: boolean;
   largeCard?: boolean;
