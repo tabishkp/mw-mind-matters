@@ -8,7 +8,8 @@ import {
   Smartphone, FileEdit, Headphones, Pill, Coffee, Wine, 
   UtensilsCrossed, Dumbbell, BedDouble, Glasses, Battery, 
   Eye, TrendingUp, Target, Frown, Star, SmilePlus, Waves,
-  AlertTriangle, Repeat, Heart, Database, Atom, Scale, Brain, Ear
+  AlertTriangle, Repeat, Heart, Database, Atom, Scale, Brain, Ear,
+  Music
 } from 'lucide-react';
 
 export {
@@ -20,5 +21,6 @@ export {
   Smartphone, FileEdit, Headphones, Pill, Coffee, Wine, 
   UtensilsCrossed, Dumbbell, BedDouble, Glasses, Battery, 
   Eye, TrendingUp, Target, Frown, Star, SmilePlus, Waves,
-  AlertTriangle, Repeat, Heart, Database, Atom, Scale, Brain, Ear
+  AlertTriangle, Repeat, Heart, Database, Atom, Scale, Brain, Ear,
+  Music
 };
