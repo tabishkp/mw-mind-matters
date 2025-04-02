@@ -1,4 +1,3 @@
-
 import React from 'react';
 import BottomNavigation from '@/components/layout/BottomNavigation';
 import { Gift, User } from 'lucide-react';

@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import BottomNavigation from '@/components/layout/BottomNavigation';
 import { ArrowRight, Gift, User, Info } from 'lucide-react';
 import { Moon, Bell, AlertTriangle, MoonStar, Clock } from '@/components/ui/lucide-icons';
@@ -7,10 +7,13 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import SleepTimeChart from '@/components/sleep/SleepTimeChart';
+import SleepDebtChart from '@/components/sleep/SleepDebtChart';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 
 const Sleep = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
+  const [activeTab, setActiveTab] = useState('sleep-times');
   
   const showInfoToast = () => {
     toast({
@@ -54,20 +57,61 @@ const Sleep = () => {
         </div>
         
         {/* Tabs */}
-        <div className="flex rounded-lg bg-gray-800 mb-6">
-          <button className="flex-1 py-3 rounded-lg bg-brand-purple text-white font-medium">
-            Sleep Times
-          </button>
-          <button className="flex-1 py-3 text-gray-400">
-            Sleep Debt
-          </button>
-          <button className="flex-1 py-3 text-gray-400">
-            Sleep Quality
-          </button>
-        </div>
-        
-        {/* Sleep Times Chart */}
-        <SleepTimeChart />
+        <Tabs 
+          defaultValue="sleep-times" 
+          value={activeTab}
+          onValueChange={setActiveTab}
+          className="w-full"
+        >
+          <TabsList className="grid grid-cols-3 rounded-lg bg-gray-800 mb-6 p-0 h-auto">
+            <TabsTrigger 
+              value="sleep-times" 
+              className={`py-3 rounded-lg ${activeTab === 'sleep-times' ? 'bg-brand-purple text-white' : 'text-gray-400'}`}
+            >
+              Sleep Times
+            </TabsTrigger>
+            <TabsTrigger 
+              value="sleep-debt" 
+              className={`py-3 rounded-lg ${activeTab === 'sleep-debt' ? 'bg-brand-purple text-white' : 'text-gray-400'}`}
+            >
+              Sleep Debt
+            </TabsTrigger>
+            <TabsTrigger 
+              value="sleep-quality" 
+              className={`py-3 rounded-lg ${activeTab === 'sleep-quality' ? 'bg-brand-purple text-white' : 'text-gray-400'}`}
+            >
+              Sleep Quality
+            </TabsTrigger>
+          </TabsList>
+          
+          <TabsContent value="sleep-times">
+            {/* Sleep Times Chart */}
+            <SleepTimeChart />
+          </TabsContent>
+          
+          <TabsContent value="sleep-debt">
+            <div className="mb-4">
+              <h3 className="text-lg font-medium mb-2">Your Sleep Debt</h3>
+              <p className="text-sm text-gray-400">
+                You're currently running a sleep deficit of <span className="text-red-400 font-medium">12.8 hours</span> this week.
+                Try to get more sleep on the weekend to recover.
+              </p>
+            </div>
+            <SleepDebtChart />
+          </TabsContent>
+          
+          <TabsContent value="sleep-quality">
+            <div className="flex flex-col items-center justify-center py-8">
+              <div className="text-gray-500 mb-4">
+                <AlertTriangle size={24} />
+              </div>
+              <p className="text-center text-gray-400">
+                Not enough data to analyze your sleep quality yet.
+                <br />Track at least 7 days of sleep to see quality analysis.
+              </p>
+            </div>
+          </TabsContent>
+        </Tabs>
         
         {/* Smart Schedule */}
         <div className="bg-gray-800/40 border border-gray-700 rounded-xl p-4 mt-8 flex justify-between items-center">
@@ -104,11 +148,11 @@ const Sleep = () => {
           <div className="flex items-start">
             <div className="flex-1">
               <h3 className="text-lg font-medium mb-1">Struggling with sleep?</h3>
-              <p className="text-sm text-gray-200 mb-4">Try Man Matters' Sleep+ supplement with Magnesium and Melatonin.</p>
+              <p className="text-sm text-gray-200 mb-4">Try Man Matters' Magnesium Gummies to improve sleep quality and reduce restlessness.</p>
               <Button 
                 variant="secondary" 
                 className="bg-white hover:bg-gray-200 text-purple-900"
-                onClick={() => window.open("https://manmatters.com/products/sleep", "_blank")}
+                onClick={() => window.open("https://manmatters.com/dp/magnesium-gummies/2024470", "_blank")}
               >
                 Shop Now
               </Button>

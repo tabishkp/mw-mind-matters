@@ -8,6 +8,7 @@ import {
   Sunrise, Sun, Coffee, Sunset, Moon, MoonStar, 
   Battery, LineChart 
 } from '@/components/ui/lucide-icons';
+import EnergyLevelChart from '@/components/energy/EnergyLevelChart';
 
 const Energy = () => {
   const navigate = useNavigate();
@@ -66,6 +67,15 @@ const Energy = () => {
               <ArrowRight size={18} className="text-gray-500" />
             </div>
           </div>
+        </div>
+        
+        {/* Energy Level Chart */}
+        <div className="mb-6">
+          <h2 className="text-xl font-medium mb-4">Today's Energy Forecast</h2>
+          <p className="text-sm text-gray-400 mb-4">
+            Based on your sleep patterns and chronotype, here's your predicted energy throughout the day:
+          </p>
+          <EnergyLevelChart />
         </div>
         
         {/* Detailed Energy Explanation Card */}
@@ -180,12 +190,12 @@ const Energy = () => {
             <div>
               <h3 className="font-medium text-lg mb-1">Boost Your Energy Naturally</h3>
               <p className="text-sm opacity-90 mb-4">
-                Man Matters Sleep+ with Magnesium helps regulate your energy cycles for better daytime alertness.
+                Man Matters Magnesium Gummies help regulate your sleep-wake cycles for better daytime energy.
               </p>
               <Button 
                 variant="secondary" 
                 className="bg-white/20 hover:bg-white/30"
-                onClick={() => window.open("https://manmatters.com/products/sleep", "_blank")}
+                onClick={() => window.open("https://manmatters.com/dp/magnesium-gummies/2024470", "_blank")}
               >
                 Learn More
               </Button>
