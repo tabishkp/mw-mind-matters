@@ -8,12 +8,13 @@ import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import SleepTimeChart from '@/components/sleep/SleepTimeChart';
 import SleepDebtChart from '@/components/sleep/SleepDebtChart';
+import SleepDebtDisplay from '@/components/sleep/SleepDebtDisplay';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 
 const Sleep = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
-  const [activeTab, setActiveTab] = useState('sleep-times');
+  const [activeTab, setActiveTab] = useState('sleep-debt');
   
   const showInfoToast = () => {
     toast({
@@ -58,7 +59,7 @@ const Sleep = () => {
         
         {/* Tabs */}
         <Tabs 
-          defaultValue="sleep-times" 
+          defaultValue="sleep-debt" 
           value={activeTab}
           onValueChange={setActiveTab}
           className="w-full"
@@ -90,14 +91,44 @@ const Sleep = () => {
           </TabsContent>
           
           <TabsContent value="sleep-debt">
-            <div className="mb-4">
-              <h3 className="text-lg font-medium mb-2">Your Sleep Debt</h3>
-              <p className="text-sm text-gray-400">
-                You're currently running a sleep deficit of <span className="text-red-400 font-medium">12.8 hours</span> this week.
-                Try to get more sleep on the weekend to recover.
-              </p>
+            {/* Enhanced Sleep Debt Display */}
+            <SleepDebtDisplay debtHours={12.8} />
+            
+            {/* Current Energy Zone */}
+            <div className="bg-gray-900/80 border border-gray-800 rounded-xl p-4 mt-8">
+              <div className="uppercase text-sm text-gray-400 mb-2">Current Energy Zone</div>
+              <div className="flex justify-between items-center">
+                <div className="flex items-center gap-3">
+                  <div className="bg-gray-700 w-10 h-10 rounded-full flex items-center justify-center">
+                    <Moon size={20} className="text-purple-400" />
+                  </div>
+                  <div>
+                    <div className="text-purple-400 text-lg">Wind-down</div>
+                    <div className="text-gray-300">12:35a - 1:42a</div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-gray-400">No change</span>
+                  <ArrowRight size={20} className="text-gray-500" />
+                </div>
+              </div>
             </div>
-            <SleepDebtChart />
+            
+            {/* Smart Schedule */}
+            <div className="bg-gray-800/40 border border-gray-700 rounded-xl p-4 mt-8 flex justify-between items-center">
+              <div>
+                <h3 className="font-medium">Smart Schedule</h3>
+              </div>
+              <div className="flex items-center">
+                <div className="flex items-center mr-3">
+                  <div className="h-5 w-5 rounded-full border-2 border-brand-purple flex items-center justify-center bg-transparent mr-1">
+                    <Clock className="text-brand-purple" size={12} />
+                  </div>
+                  <span className="text-brand-purple text-sm">GREAT IN <span className="font-bold">7</span> days</span>
+                </div>
+                <ArrowRight size={18} className="text-gray-500" />
+              </div>
+            </div>
           </TabsContent>
           
           <TabsContent value="sleep-quality">
@@ -112,36 +143,6 @@ const Sleep = () => {
             </div>
           </TabsContent>
         </Tabs>
-        
-        {/* Smart Schedule */}
-        <div className="bg-gray-800/40 border border-gray-700 rounded-xl p-4 mt-8 flex justify-between items-center">
-          <div>
-            <h3 className="font-medium">Smart Schedule</h3>
-          </div>
-          <div className="flex items-center">
-            <div className="flex items-center mr-3">
-              <div className="h-5 w-5 rounded-full border-2 border-brand-purple flex items-center justify-center bg-transparent mr-1">
-                <Clock className="text-brand-purple" size={12} />
-              </div>
-              <span className="text-brand-purple text-sm">GREAT IN <span className="font-bold">7</span> days</span>
-            </div>
-            <ArrowRight size={18} className="text-gray-500" />
-          </div>
-        </div>
-        
-        {/* All Sleep Times */}
-        <div className="mt-8">
-          <h3 className="text-xl font-medium mb-4">All sleep times</h3>
-          
-          <div className="bg-gray-800/40 border border-gray-700 rounded-xl p-4 flex justify-between items-center">
-            <div>
-              <div className="text-sm text-gray-400">Last night (Tuesday)</div>
-              <div className="text-white">9:45p - 10:15a</div>
-            </div>
-            <div className="text-white text-lg font-medium">3h 30m</div>
-            <ArrowRight size={18} className="text-gray-500" />
-          </div>
-        </div>
         
         {/* Man Matters Product Recommendation */}
         <div className="bg-gradient-to-r from-purple-900 to-indigo-900 rounded-xl mt-8 p-6 mb-6">
@@ -194,6 +195,20 @@ const Sleep = () => {
             <div className="text-sm text-gray-400">Wake Time</div>
             <div className="text-xl font-medium mt-1">7:18a</div>
             <div className="text-xs text-gray-400 mt-1">Average</div>
+          </div>
+        </div>
+        
+        {/* All Sleep Times */}
+        <div className="mt-8">
+          <h3 className="text-xl font-medium mb-4">All sleep times</h3>
+          
+          <div className="bg-gray-800/40 border border-gray-700 rounded-xl p-4 flex justify-between items-center">
+            <div>
+              <div className="text-sm text-gray-400">Last night (Tuesday)</div>
+              <div className="text-white">9:45p - 10:15a</div>
+            </div>
+            <div className="text-white text-lg font-medium">3h 30m</div>
+            <ArrowRight size={18} className="text-gray-500" />
           </div>
         </div>
       </div>

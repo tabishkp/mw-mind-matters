@@ -13,11 +13,37 @@ const sampleSleepDebtData = [
   { day: 'WED', debt: 12.8 },
 ];
 
+interface CustomTooltipProps {
+  active?: boolean;
+  payload?: any[];
+  label?: string;
+}
+
+const CustomTooltip: React.FC<CustomTooltipProps> = ({ active, payload, label }) => {
+  if (active && payload && payload.length) {
+    const debtValue = payload[0].value;
+    
+    return (
+      <div className="bg-[#1A1F2C] p-3 rounded-md border border-gray-700 text-white">
+        <p className="text-sm font-medium">{label}</p>
+        <p className="text-sm">Sleep Debt: <span className="text-red-400 font-medium">{debtValue}hrs</span></p>
+      </div>
+    );
+  }
+  return null;
+};
+
 const SleepDebtChart: React.FC = () => {
   return (
     <div className="w-full h-[250px] mt-4">
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={sampleSleepDebtData} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
+          <defs>
+            <linearGradient id="colorDebt" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#9b4cf6" stopOpacity={0.8}/>
+              <stop offset="95%" stopColor="#f54c8d" stopOpacity={0.8}/>
+            </linearGradient>
+          </defs>
           <XAxis 
             dataKey="day" 
             axisLine={false} 
@@ -31,22 +57,14 @@ const SleepDebtChart: React.FC = () => {
             tick={{ fill: '#9F9EA1' }}
             tickFormatter={(value) => `${value}h`}
           />
-          <Tooltip
-            contentStyle={{
-              backgroundColor: '#1A1F2C',
-              borderColor: '#333',
-              borderRadius: 8,
-              color: 'white',
-            }}
-            formatter={(value: number) => [`${value}hrs debt`, 'Sleep Debt']}
-          />
+          <Tooltip content={<CustomTooltip />} />
           <Line 
             type="monotone" 
             dataKey="debt" 
-            stroke="#9b87f5" 
-            strokeWidth={2} 
-            dot={{ r: 4, fill: '#9b87f5', stroke: '#9b87f5' }}
-            activeDot={{ r: 6, fill: '#9b87f5', stroke: 'white' }}
+            stroke="url(#colorDebt)" 
+            strokeWidth={3} 
+            dot={{ r: 4, fill: '#9b4cf6', stroke: '#9b4cf6' }}
+            activeDot={{ r: 6, fill: '#9b4cf6', stroke: 'white' }}
           />
         </LineChart>
       </ResponsiveContainer>
