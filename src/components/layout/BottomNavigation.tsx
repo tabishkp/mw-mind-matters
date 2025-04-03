@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Moon, BarChart2, Briefcase, LineChart, BookOpen } from 'lucide-react';
+import { Moon, BarChart2, Briefcase, LineChart, BookOpen, Home } from 'lucide-react';
 
 const BottomNavigation: React.FC = () => {
   const navigate = useNavigate();
@@ -10,6 +10,7 @@ const BottomNavigation: React.FC = () => {
   const isActive = (path: string) => location.pathname === path;
   
   const navItems = [
+    { icon: <Home size={24} />, label: 'Home', path: '/' },
     { icon: <Moon size={24} />, label: 'Sleep', path: '/sleep' },
     { icon: <BarChart2 size={24} />, label: 'Energy', path: '/energy' },
     { icon: <Briefcase size={24} />, label: 'Tools', path: '/tools' },
@@ -19,7 +20,7 @@ const BottomNavigation: React.FC = () => {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-black/80 backdrop-blur-md border-t border-gray-800 z-40">
-      <div className="flex justify-between px-2 py-1">
+      <div className="flex justify-between px-2 py-1 overflow-x-auto">
         {navItems.map((item) => (
           <button
             key={item.path}
@@ -31,7 +32,7 @@ const BottomNavigation: React.FC = () => {
             {React.cloneElement(item.icon, { 
               className: isActive(item.path) ? 'text-brand-purple mb-1' : 'mb-1 text-gray-400',
             })}
-            <span>{item.label}</span>
+            <span className="text-xs">{item.label}</span>
           </button>
         ))}
       </div>
