@@ -11,12 +11,14 @@ import SleepDebtChart from '@/components/sleep/SleepDebtChart';
 import SleepDebtDisplay from '@/components/sleep/SleepDebtDisplay';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
+import SleepStagesLegend from '@/components/progress/SleepStagesLegend';
 
 const Sleep = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const [activeTab, setActiveTab] = useState('sleep-debt');
   const [sleepChartMode, setSleepChartMode] = useState<'debt' | 'stages'>('debt');
+  const [timeChartMode, setTimeChartMode] = useState<'default' | 'stages'>('default');
   
   const showInfoToast = () => {
     toast({
@@ -88,16 +90,11 @@ const Sleep = () => {
           </TabsList>
           
           <TabsContent value="sleep-times">
-            {/* Sleep Times Chart */}
-            <SleepTimeChart />
-          </TabsContent>
-          
-          <TabsContent value="sleep-debt">
-            {/* Sleep Visualization Toggle */}
+            {/* Sleep Times Chart Toggle */}
             <div className="flex justify-center mb-4">
-              <ToggleGroup type="single" value={sleepChartMode} onValueChange={(value) => value && setSleepChartMode(value as 'debt' | 'stages')}>
-                <ToggleGroupItem value="debt" className="text-sm">
-                  Sleep Debt
+              <ToggleGroup type="single" value={timeChartMode} onValueChange={(value) => value && setTimeChartMode(value as 'default' | 'stages')}>
+                <ToggleGroupItem value="default" className="text-sm">
+                  Hours
                 </ToggleGroupItem>
                 <ToggleGroupItem value="stages" className="text-sm">
                   Sleep Stages
@@ -105,10 +102,13 @@ const Sleep = () => {
               </ToggleGroup>
             </div>
             
-            {sleepChartMode === 'debt' ? (
-              <SleepDebtDisplay debtHours={12.8} />
-            ) : (
-              <div className="bg-gray-900/80 border border-gray-800 rounded-xl p-4 mb-4">
+            {timeChartMode === 'stages' && <SleepStagesLegend />}
+            
+            {/* Sleep Times Chart */}
+            <SleepTimeChart showStages={timeChartMode === 'stages'} />
+            
+            {timeChartMode === 'stages' && (
+              <div className="bg-gray-900/80 border border-gray-800 rounded-xl p-4 mt-6 mb-4">
                 <h3 className="text-lg font-medium mb-2">Sleep Stages</h3>
                 <div className="mb-4 text-sm text-gray-300">
                   Tracking your sleep stages helps understand sleep quality beyond just total hours.
@@ -131,6 +131,26 @@ const Sleep = () => {
                   </div>
                 </div>
               </div>
+            )}
+          </TabsContent>
+          
+          <TabsContent value="sleep-debt">
+            {/* Sleep Visualization Toggle */}
+            <div className="flex justify-center mb-4">
+              <ToggleGroup type="single" value={sleepChartMode} onValueChange={(value) => value && setSleepChartMode(value as 'debt' | 'stages')}>
+                <ToggleGroupItem value="debt" className="text-sm">
+                  Sleep Debt
+                </ToggleGroupItem>
+                <ToggleGroupItem value="stages" className="text-sm">
+                  Sleep Stages
+                </ToggleGroupItem>
+              </ToggleGroup>
+            </div>
+            
+            {sleepChartMode === 'debt' ? (
+              <SleepDebtDisplay debtHours={12.8} />
+            ) : (
+              <SleepStagesLegend />
             )}
             
             {/* Sleep Chart based on mode */}
