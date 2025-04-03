@@ -1,6 +1,7 @@
+
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import MainLayout from '@/components/layout/MainLayout';
+import MainLayout from './components/layout/MainLayout';
 import Landing from '@/pages/Landing';
 import SignUp from '@/pages/SignUp';
 import Login from '@/pages/Login';
