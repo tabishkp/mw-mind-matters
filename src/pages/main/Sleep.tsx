@@ -138,12 +138,12 @@ const Sleep = () => {
             {/* Sleep Visualization Toggle */}
             <div className="flex justify-center mb-4">
               <ToggleGroup type="single" value={sleepChartMode} onValueChange={(value) => value && setSleepChartMode(value as 'debt' | 'stages')}>
-                <ToggleGroupItem value="debt" className="text-sm">
+                {/* <ToggleGroupItem value="debt" className="text-sm">
                   Sleep Debt
-                </ToggleGroupItem>
-                <ToggleGroupItem value="stages" className="text-sm">
+                </ToggleGroupItem> */}
+                {/* <ToggleGroupItem value="stages" className="text-sm">
                   Sleep Stages
-                </ToggleGroupItem>
+                </ToggleGroupItem> */}
               </ToggleGroup>
             </div>
             
@@ -198,12 +198,17 @@ const Sleep = () => {
           <TabsContent value="sleep-quality">
             <div className="flex flex-col items-center justify-center py-8">
               <div className="text-gray-500 mb-4">
-                <AlertTriangle size={24} />
+                {/* <AlertTriangle size={24} /> */}
               </div>
-              <p className="text-center text-gray-400">
-                Not enough data to analyze your sleep quality yet.
-                <br />Track at least 7 days of sleep to see quality analysis.
-              </p>
+              <div className="flex flex-col items-center justify-center h-60">
+      <div className="text-center">
+        <h3 className="text-lg font-medium mb-2">Track Sleep Quality</h3>
+        <p className="text-gray-400 mb-4">Rate how you feel each morning to analyze what affects your sleep.</p>
+        <Button onClick={() => navigate("/tools/sleep-quality")} className="bg-brand-purple">
+          {"Rate Today's Sleep"}
+        </Button>
+      </div>
+    </div>
             </div>
           </TabsContent>
         </Tabs>
@@ -214,13 +219,24 @@ const Sleep = () => {
             <div className="flex-1">
               <h3 className="text-lg font-medium mb-1">Struggling with sleep?</h3>
               <p className="text-sm text-gray-200 mb-4">Try Man Matters' Magnesium Gummies to improve sleep quality and reduce restlessness.</p>
+              <div className="flex items-center justify-center">
+
               <Button 
                 variant="secondary" 
                 className="bg-white hover:bg-gray-200 text-purple-900"
                 onClick={() => window.open("https://manmatters.com/dp/magnesium-gummies/2024470", "_blank")}
-              >
+                >
                 Shop Now
               </Button>
+              <Button 
+                variant="secondary" 
+                className="bg-white hover:bg-gray-200 text-purple-900"
+                style={{ marginLeft: "8px", color: "black"}}
+                onClick={() => window.open("https://manmatters.com/booking-listing", "_blank")}
+                >
+                Talk to an Expert
+              </Button>
+                </div>
             </div>
             <div className="w-20 h-20 rounded-lg bg-white/10 flex items-center justify-center">
               <MoonStar size={32} className="text-white" />

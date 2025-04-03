@@ -22,6 +22,7 @@ import Energy from "./pages/main/Energy";
 import Tools from "./pages/main/Tools";
 import Progress from "./pages/main/Progress";
 import Learn from "./pages/main/Learn";
+import Community from "./pages/main/community";
 import ToolDetails from "./pages/main/ToolDetails";
 import MeditationPlayer from "./pages/main/MeditationPlayer";
 import ArticleView from "./pages/main/ArticleView";
@@ -62,6 +63,7 @@ const App = () => {
               <Route path="/tools" element={<Tools />} />
               <Route path="/progress" element={<Progress />} />
               <Route path="/learn" element={<Learn />} />
+              <Route path="/community" element={<Community />} />
               
               {/* Feature Detail Routes */}
               <Route path="/tools/:toolId" element={<ToolDetails />} />

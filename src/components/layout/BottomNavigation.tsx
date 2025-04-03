@@ -14,8 +14,9 @@ const BottomNavigation: React.FC = () => {
     { icon: <Moon size={24} />, label: 'Sleep', path: '/sleep' },
     { icon: <BarChart2 size={24} />, label: 'Energy', path: '/energy' },
     { icon: <Briefcase size={24} />, label: 'Tools', path: '/tools' },
-    { icon: <LineChart size={24} />, label: 'Progress', path: '/progress' },
+    // { icon: <LineChart size={24} />, label: 'Progress', path: '/progress' },
     { icon: <BookOpen size={24} />, label: 'Learn', path: '/learn' },
+    { icon: <BookOpen size={24} />, label: 'Community', path: '/community' },
   ];
 
   return (

@@ -6,10 +6,10 @@ const sampleSleepDebtData = [
   { day: 'WED', debt: 6.1, deep: 1.2, rem: 1.5, core: 3.4 },
   { day: 'THU', debt: 6.4, deep: 1.3, rem: 1.6, core: 3.5 },
   { day: 'FRI', debt: 3.8, deep: 0.8, rem: 0.9, core: 2.1 },
-  { day: 'SAT', debt: 0, deep: 2.0, rem: 1.8, core: 4.2 },
+  { day: 'SAT', debt: 4.7, deep: 2.0, rem: 1.8, core: 4.2 },
   { day: 'SUN', debt: 5.5, deep: 1.1, rem: 1.4, core: 3.0 },
-  { day: 'MON', debt: 9.6, deep: 0.5, rem: 0.7, core: 1.8 },
-  { day: 'TUE', debt: 0, deep: 1.9, rem: 2.1, core: 4.0 },
+  { day: 'MON', debt: 9.6, deep: 1.5, rem: 1.7, core: 1.8 },
+  { day: 'TUE', debt: 3, deep: 1.9, rem: 2.1, core: 4.0 },
   { day: 'WED', debt: 12.8, deep: 0.3, rem: 0.5, core: 1.2 },
 ];
 
