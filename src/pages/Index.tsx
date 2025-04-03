@@ -16,7 +16,7 @@ const Index = () => {
             <Moon className="mr-2 text-brand-purple" size={32} /> 
             Mind Matters
           </h1>
-          <p className="text-gray-400 mt-2">by Brand Man Matters</p>
+          <p className="text-gray-400 mt-2">Sleep Matters</p>
         </div>
       </div>
 
