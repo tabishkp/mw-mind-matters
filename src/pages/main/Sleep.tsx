@@ -11,17 +11,12 @@ import SleepDebtChart from '@/components/sleep/SleepDebtChart';
 import SleepDebtDisplay from '@/components/sleep/SleepDebtDisplay';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
-import SleepQualityModal from '@/components/sleep/SleepQualityModal';
-import { useSleepQuality } from '@/contexts/SleepQualityContext';
-import SleepQualityHistoryChart from '@/components/sleep/SleepQualityHistoryChart';
 
 const Sleep = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
-  const { ratings, addRating, getAverageRating, hasRatedToday } = useSleepQuality();
   const [activeTab, setActiveTab] = useState('sleep-debt');
   const [sleepChartMode, setSleepChartMode] = useState<'debt' | 'stages'>('debt');
-  const [qualityModalOpen, setQualityModalOpen] = useState(false);
   
   const showInfoToast = () => {
     toast({
@@ -29,10 +24,6 @@ const Sleep = () => {
       description: "Sleep debt is the difference between the amount of sleep you should be getting and the amount you actually get.",
     });
   };
-  
-  // Get the last 7 days of ratings
-  const recentRatings = ratings.slice(-7);
-  const averageRating = getAverageRating();
   
   return (
     <div className="min-h-screen bg-[#121520] text-white pb-20">
@@ -185,83 +176,14 @@ const Sleep = () => {
           </TabsContent>
           
           <TabsContent value="sleep-quality">
-            <div className="bg-gray-900/80 border border-gray-800 rounded-xl p-6 mb-6">
-              <div className="flex justify-between items-start">
-                <div>
-                  <h3 className="text-lg font-medium mb-2">Sleep Quality</h3>
-                  <p className="text-sm text-gray-300 mb-4">
-                    Gauge your sleep quality by tracking how you're feeling 90 mins after wake up.
-                  </p>
-                  <div className="flex items-center space-x-2">
-                    <div className="bg-gradient-to-r from-red-500 to-purple-500 h-2 w-2 rounded-full"></div>
-                    <span className="text-xs text-gray-400">
-                      {hasRatedToday ? "You've rated your sleep today" : "You haven't rated your sleep today"}
-                    </span>
-                  </div>
-                </div>
-                <div>
-                  <div className="flex items-center justify-center bg-gray-800 rounded-full h-16 w-16">
-                    {averageRating ? (
-                      <span className="text-xl font-semibold">{averageRating}</span>
-                    ) : (
-                      <span className="text-xl font-semibold">-</span>
-                    )}
-                  </div>
-                  <p className="text-xs text-center text-gray-400 mt-1">AVG</p>
-                </div>
+            <div className="flex flex-col items-center justify-center py-8">
+              <div className="text-gray-500 mb-4">
+                <AlertTriangle size={24} />
               </div>
-              
-              {ratings.length > 0 ? (
-                <div className="mt-4">
-                  <SleepQualityHistoryChart data={recentRatings} />
-                </div>
-              ) : (
-                <div className="flex flex-col items-center justify-center py-8">
-                  <div className="text-gray-500 mb-4">
-                    <AlertTriangle size={24} />
-                  </div>
-                  <p className="text-center text-gray-400">
-                    No sleep quality data yet.
-                    <br />Start rating your sleep to see trends.
-                  </p>
-                </div>
-              )}
-              
-              <div className="mt-6">
-                <Button 
-                  onClick={() => setQualityModalOpen(true)} 
-                  className="w-full bg-brand-purple"
-                >
-                  {hasRatedToday ? "Update Today's Rating" : "Rate Your Sleep"}
-                </Button>
-              </div>
-            </div>
-            
-            <div className="bg-gray-800/40 border border-gray-700 rounded-xl p-4">
-              <h3 className="text-lg font-medium mb-4">Sleep Quality Benefits</h3>
-              
-              <ul className="space-y-3">
-                <li className="flex items-start">
-                  <div className="w-2 h-2 rounded-full bg-brand-purple mt-2 mr-3"></div>
-                  <span>Learn the impact of your sleep habits</span>
-                </li>
-                <li className="flex items-start">
-                  <div className="w-2 h-2 rounded-full bg-brand-purple mt-2 mr-3"></div>
-                  <span>Feel better about waking up</span>
-                </li>
-                <li className="flex items-start">
-                  <div className="w-2 h-2 rounded-full bg-brand-purple mt-2 mr-3"></div>
-                  <span>Truly assess how you feel after sleep</span>
-                </li>
-              </ul>
-              
-              <Button 
-                variant="outline" 
-                className="w-full mt-6 border-gray-700 text-brand-purple hover:bg-gray-700/50"
-                onClick={() => navigate('/tools/sleep-quality')}
-              >
-                View Detailed Sleep Quality
-              </Button>
+              <p className="text-center text-gray-400">
+                Not enough data to analyze your sleep quality yet.
+                <br />Track at least 7 days of sleep to see quality analysis.
+              </p>
             </div>
           </TabsContent>
         </Tabs>
@@ -334,13 +256,6 @@ const Sleep = () => {
           </div>
         </div>
       </div>
-      
-      {/* Sleep Quality Modal */}
-      <SleepQualityModal
-        open={qualityModalOpen}
-        onOpenChange={setQualityModalOpen}
-        onRatingSubmit={addRating}
-      />
       
       <BottomNavigation />
     </div>
