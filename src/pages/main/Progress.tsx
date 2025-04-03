@@ -7,10 +7,12 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import SleepTimeChart from '@/components/sleep/SleepTimeChart';
 import SleepDebtChart from '@/components/sleep/SleepDebtChart';
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 
 const Progress = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<'times' | 'debt' | 'quality'>('times');
+  const [sleepChartMode, setSleepChartMode] = useState<'debt' | 'stages'>('debt');
   
   return (
     <div className="min-h-screen bg-[#121520] text-white pb-20">
@@ -66,7 +68,44 @@ const Progress = () => {
         
         {/* Chart based on active tab */}
         {activeTab === 'times' && <SleepTimeChart />}
-        {activeTab === 'debt' && <SleepDebtChart />}
+        
+        {activeTab === 'debt' && (
+          <>
+            {/* Sleep Visualization Toggle */}
+            <div className="flex justify-center mb-4">
+              <ToggleGroup type="single" value={sleepChartMode} onValueChange={(value) => value && setSleepChartMode(value as 'debt' | 'stages')}>
+                <ToggleGroupItem value="debt" className="text-sm">
+                  Sleep Debt
+                </ToggleGroupItem>
+                <ToggleGroupItem value="stages" className="text-sm">
+                  Sleep Stages
+                </ToggleGroupItem>
+              </ToggleGroup>
+            </div>
+            
+            {sleepChartMode === 'stages' && (
+              <div className="bg-gray-900/80 border border-gray-800 rounded-xl p-3 mb-4">
+                <div className="flex flex-wrap gap-4 justify-around">
+                  <div className="flex items-center">
+                    <div className="w-3 h-3 rounded-full bg-blue-500 mr-2" />
+                    <span className="text-xs">Deep Sleep</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-3 h-3 rounded-full bg-purple-500 mr-2" />
+                    <span className="text-xs">REM Sleep</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-3 h-3 rounded-full bg-teal-500 mr-2" />
+                    <span className="text-xs">Core Sleep</span>
+                  </div>
+                </div>
+              </div>
+            )}
+            
+            <SleepDebtChart mode={sleepChartMode} />
+          </>
+        )}
+        
         {activeTab === 'quality' && (
           <div className="flex flex-col items-center justify-center h-60">
             <div className="text-center">

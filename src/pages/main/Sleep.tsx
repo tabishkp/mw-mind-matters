@@ -10,11 +10,13 @@ import SleepTimeChart from '@/components/sleep/SleepTimeChart';
 import SleepDebtChart from '@/components/sleep/SleepDebtChart';
 import SleepDebtDisplay from '@/components/sleep/SleepDebtDisplay';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 
 const Sleep = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const [activeTab, setActiveTab] = useState('sleep-debt');
+  const [sleepChartMode, setSleepChartMode] = useState<'debt' | 'stages'>('debt');
   
   const showInfoToast = () => {
     toast({
@@ -91,28 +93,70 @@ const Sleep = () => {
           </TabsContent>
           
           <TabsContent value="sleep-debt">
-            {/* Enhanced Sleep Debt Display */}
-            <SleepDebtDisplay debtHours={12.8} />
+            {/* Sleep Visualization Toggle */}
+            <div className="flex justify-center mb-4">
+              <ToggleGroup type="single" value={sleepChartMode} onValueChange={(value) => value && setSleepChartMode(value as 'debt' | 'stages')}>
+                <ToggleGroupItem value="debt" className="text-sm">
+                  Sleep Debt
+                </ToggleGroupItem>
+                <ToggleGroupItem value="stages" className="text-sm">
+                  Sleep Stages
+                </ToggleGroupItem>
+              </ToggleGroup>
+            </div>
             
-            {/* Current Energy Zone */}
-            <div className="bg-gray-900/80 border border-gray-800 rounded-xl p-4 mt-8">
-              <div className="uppercase text-sm text-gray-400 mb-2">Current Energy Zone</div>
-              <div className="flex justify-between items-center">
-                <div className="flex items-center gap-3">
-                  <div className="bg-gray-700 w-10 h-10 rounded-full flex items-center justify-center">
-                    <Moon size={20} className="text-purple-400" />
-                  </div>
-                  <div>
-                    <div className="text-purple-400 text-lg">Wind-down</div>
-                    <div className="text-gray-300">12:35a - 1:42a</div>
-                  </div>
+            {sleepChartMode === 'debt' ? (
+              <SleepDebtDisplay debtHours={12.8} />
+            ) : (
+              <div className="bg-gray-900/80 border border-gray-800 rounded-xl p-4 mb-4">
+                <h3 className="text-lg font-medium mb-2">Sleep Stages</h3>
+                <div className="mb-4 text-sm text-gray-300">
+                  Tracking your sleep stages helps understand sleep quality beyond just total hours.
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-gray-400">No change</span>
-                  <ArrowRight size={20} className="text-gray-500" />
+                <div className="grid grid-cols-3 gap-3 mb-4">
+                  <div className="bg-gray-800/60 p-3 rounded-lg">
+                    <div className="w-3 h-3 rounded-full bg-blue-500 mb-2" />
+                    <div className="text-sm font-medium">Deep Sleep</div>
+                    <div className="text-xs text-gray-400">Physical restoration</div>
+                  </div>
+                  <div className="bg-gray-800/60 p-3 rounded-lg">
+                    <div className="w-3 h-3 rounded-full bg-purple-500 mb-2" />
+                    <div className="text-sm font-medium">REM Sleep</div>
+                    <div className="text-xs text-gray-400">Dream state, memory</div>
+                  </div>
+                  <div className="bg-gray-800/60 p-3 rounded-lg">
+                    <div className="w-3 h-3 rounded-full bg-teal-500 mb-2" />
+                    <div className="text-sm font-medium">Core Sleep</div>
+                    <div className="text-xs text-gray-400">Light to medium</div>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
+            
+            {/* Sleep Chart based on mode */}
+            <SleepDebtChart mode={sleepChartMode} />
+            
+            {/* Current Energy Zone (only show in debt mode) */}
+            {sleepChartMode === 'debt' && (
+              <div className="bg-gray-900/80 border border-gray-800 rounded-xl p-4 mt-8">
+                <div className="uppercase text-sm text-gray-400 mb-2">Current Energy Zone</div>
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center gap-3">
+                    <div className="bg-gray-700 w-10 h-10 rounded-full flex items-center justify-center">
+                      <Moon size={20} className="text-purple-400" />
+                    </div>
+                    <div>
+                      <div className="text-purple-400 text-lg">Wind-down</div>
+                      <div className="text-gray-300">12:35a - 1:42a</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-gray-400">No change</span>
+                    <ArrowRight size={20} className="text-gray-500" />
+                  </div>
+                </div>
+              </div>
+            )}
             
             {/* Smart Schedule */}
             <div className="bg-gray-800/40 border border-gray-700 rounded-xl p-4 mt-8 flex justify-between items-center">
