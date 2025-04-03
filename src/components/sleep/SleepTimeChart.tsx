@@ -5,10 +5,10 @@ import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Tooltip, Legend } fro
 const sampleSleepTimeData = [
   { day: 'WED', hours: 7.33, quality: 'OKAY', deep: 1.2, rem: 1.5, core: 4.63 },
   { day: 'THU', hours: 10.67, quality: 'GREAT', deep: 2.2, rem: 2.67, core: 5.8 },
-  { day: 'FRI', hours: 0, quality: 'MISSING', deep: 0, rem: 0, core: 0 },
+  { day: 'FRI', hours: 6, quality: 'OKAY', debt: 3.8, deep: 0.8, rem: 0.9, core: 2.1 },
   { day: 'SAT', hours: 6.5, quality: 'OKAY', deep: 1.3, rem: 1.2, core: 4.0 },
   { day: 'SUN', hours: 4.17, quality: 'POOR', deep: 0.8, rem: 0.97, core: 2.4 },
-  { day: 'MON', hours: 0, quality: 'MISSING', deep: 0, rem: 0, core: 0 },
+  { day: 'MON', hours: 8, quality: 'OKAY', debt: 9.6, deep: 1.5, rem: 1.7, core: 1.8},
   { day: 'TUE', hours: 3.5, quality: 'POOR', deep: 0.5, rem: 0.8, core: 2.2 },
 ];
 

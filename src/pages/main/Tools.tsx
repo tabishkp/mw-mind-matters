@@ -68,6 +68,17 @@ const Tools = () => {
             </div>
           </div>
         </Link>
+        <Link to="/tools/sleep-sounds" className="block">
+          <div className="bg-gray-800/40 border border-gray-700 rounded-xl p-4 mb-6 flex items-center">
+            <div className="h-12 w-12 rounded-full bg-gray-700 flex items-center justify-center mr-3">
+              <Play className="h-5 w-5 text-white" />
+            </div>
+            <div>
+              <h3 className="font-medium">Guided Meditaion</h3>
+              <p className="text-sm text-gray-400">Relax and unwind</p>
+            </div>
+          </div>
+        </Link>
         
         {/* Guides Section */}
         <h2 className="text-lg font-medium mb-3">Guides</h2>
