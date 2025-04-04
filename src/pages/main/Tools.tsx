@@ -156,7 +156,7 @@ const Tools = () => {
         {/* Stop at the Right Time */}
         <h3 className="uppercase text-xs text-gray-500 mb-2">STOP AT THE RIGHT TIME</h3>
         
-        <div className="grid grid-cols-4 gap-3 mb-6">
+        <div className="grid grid-cols-3 gap-3 mb-6">
           <ToolCard
             id="caffeine"
             title="Caffeine"
@@ -185,20 +185,20 @@ const Tools = () => {
             className="bg-gray-800/40 border border-gray-700"
           />
           
-          <ToolCard
+          {/* <ToolCard
             id="alcohol"
             title="Alcohol"
             icon={<Wine className="h-5 w-5 text-white" />}
             iconColor="bg-gradient-to-br from-red-700 to-pink-900"
             link="/tools/alcohol"
             className="bg-gray-800/40 border border-gray-700"
-          />
+          /> */}
         </div>
         
         {/* Optimize Routines */}
         <h3 className="uppercase text-xs text-gray-500 mb-2">OPTIMIZE ROUTINES</h3>
         
-        <div className="grid grid-cols-4 gap-3">
+        <div className="grid grid-cols-3 gap-3">
           <ToolCard
             id="evening"
             title="Evening"
@@ -227,7 +227,7 @@ const Tools = () => {
             className="bg-gray-800/40 border border-gray-700"
           />
           
-          <ToolCard
+          {/* <ToolCard
             id="peaks-dips"
             title="Peaks & Dips"
             icon={<TrendingUp className="h-5 w-5 text-white" />}
@@ -235,7 +235,7 @@ const Tools = () => {
             hasReminder={true}
             link="/tools/peaks-dips"
             className="bg-gray-800/40 border border-gray-700"
-          />
+          /> */}
         </div>
         
         {/* Wind-down Tip */}

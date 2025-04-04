@@ -54,12 +54,12 @@ const Sleep = () => {
         <div className="text-gray-400 mb-4">March 20 - April 2</div>
         
         {/* Alert Banner */}
-        <div className="bg-red-900/40 border border-red-800 rounded-lg py-2 px-4 mb-6 flex items-center">
+        {/* <div className="bg-red-900/40 border border-red-800 rounded-lg py-2 px-4 mb-6 flex items-center">
           <div className="bg-red-700 rounded-full p-1 mr-2">
             <AlertTriangle size={16} className="text-white" />
           </div>
           <div className="text-white">Missing data. <span className="text-brand-purple">Add missing sleep times</span></div>
-        </div>
+        </div> */}
         
         {/* Tabs */}
         <Tabs 
@@ -267,13 +267,13 @@ const Sleep = () => {
           
           <div className="bg-gray-800/40 border border-gray-700 rounded-xl p-4">
             <div className="text-sm text-gray-400">Bedtime</div>
-            <div className="text-xl font-medium mt-1">11:42p</div>
+            <div className="text-xl font-medium mt-1">11:42pm</div>
             <div className="text-xs text-gray-400 mt-1">Average</div>
           </div>
           
           <div className="bg-gray-800/40 border border-gray-700 rounded-xl p-4">
             <div className="text-sm text-gray-400">Wake Time</div>
-            <div className="text-xl font-medium mt-1">7:18a</div>
+            <div className="text-xl font-medium mt-1">7:18am</div>
             <div className="text-xs text-gray-400 mt-1">Average</div>
           </div>
         </div>
@@ -285,7 +285,7 @@ const Sleep = () => {
           <div className="bg-gray-800/40 border border-gray-700 rounded-xl p-4 flex justify-between items-center">
             <div>
               <div className="text-sm text-gray-400">Last night (Tuesday)</div>
-              <div className="text-white">9:45p - 10:15a</div>
+              <div className="text-white">9:45pm - 10:15am</div>
             </div>
             <div className="text-white text-lg font-medium">3h 30m</div>
             <ArrowRight size={18} className="text-gray-500" />
