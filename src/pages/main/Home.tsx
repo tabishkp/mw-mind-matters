@@ -48,11 +48,11 @@ const Home = () => {
               <div className="h-32 w-32 rounded-full border-[6px] border-gray-700 flex items-center justify-center">
                 <div>
                   <div className="text-3xl font-bold">{sleepDebt}</div>
-                  <div className="text-sm text-gray-400">hrs</div>
+                  <div className="text-sm text-gray-400" style={{textAlign:"center"}}>hrs</div>
                   <div className="text-sm text-gray-200">Sleep debt</div>
                 </div>
               </div>
-              <div className="absolute -left-4 top-1/4 bg-pink-600 rounded-lg px-2 py-1 text-xs font-semibold">
+              <div className="-left-4 top-1/4 bg-pink-600 rounded-lg px-2 py-1 text-xs font-semibold" style={{marginTop: '10px'}}>
                 + {yesterdayDebt}hrs debt
               </div>
             </div>
