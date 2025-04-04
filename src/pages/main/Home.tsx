@@ -48,7 +48,7 @@ const Home = () => {
               <div className="h-32 w-32 rounded-full border-[6px] border-gray-700 flex items-center justify-center">
                 <div>
                   <div className="text-3xl font-bold">{sleepDebt}</div>
-                  <div className="text-sm text-gray-400" style={{textAlign:"center"}}>hrs</div>
+                  <div className="text-sm text-gray-400" style={{textAlign:"center" }}>hrs</div>
                   <div className="text-sm text-gray-200">Sleep debt</div>
                 </div>
               </div>
