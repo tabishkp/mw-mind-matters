@@ -52,7 +52,7 @@ const Home = () => {
                   <div className="text-sm text-gray-200">Sleep debt</div>
                 </div>
               </div>
-              <div className="-left-4 top-1/4 bg-pink-600 rounded-lg px-2 py-1 text-xs font-semibold" style={{marginTop: '10px'}}>
+              <div className="-left-4 top-1/4 bg-pink-600 rounded-lg px-2 py-1 text-xs font-semibold" style={{marginTop: '10px'}} >
                 + {yesterdayDebt}hrs debt
               </div>
             </div>
